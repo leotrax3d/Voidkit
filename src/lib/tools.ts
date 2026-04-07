@@ -1,10 +1,12 @@
 import {
   Binary,
   Braces,
+  Clock3,
   Coins,
   Dice5,
   Dices,
   Diff,
+  ArrowLeftRight,
   Fingerprint,
   FileText,
   Hash,
@@ -12,6 +14,7 @@ import {
   ScrollText,
   ListOrdered,
   QrCode,
+  Percent,
   Users
 } from 'lucide-svelte';
 import type { CategoryGroup, Tool } from '$lib/types';
@@ -136,6 +139,38 @@ export const tools: Tool[] = [
     category: 'Text & Data',
     icon: FileText,
     slug: 'markdown-preview'
+  },
+  {
+    id: 'unit-converter',
+    name: 'Unit Converter',
+    description: 'Convert length, weight, temperature, area, volume, speed, and data units.',
+    category: 'Calculators & Converters',
+    icon: ArrowLeftRight,
+    slug: 'unit-converter'
+  },
+  {
+    id: 'timestamp-converter',
+    name: 'Timestamp Converter',
+    description: 'Convert between Unix timestamps, human dates, and live clock values.',
+    category: 'Calculators & Converters',
+    icon: Clock3,
+    slug: 'timestamp-converter'
+  },
+  {
+    id: 'base-converter',
+    name: 'Number Base Converter',
+    description: 'Convert numbers across binary, octal, decimal, and hex values.',
+    category: 'Calculators & Converters',
+    icon: Binary,
+    slug: 'base-converter'
+  },
+  {
+    id: 'percentage-calculator',
+    name: 'Percentage Calculator',
+    description: 'Calculate common percentage scenarios with live results.',
+    category: 'Calculators & Converters',
+    icon: Percent,
+    slug: 'percentage-calculator'
   }
 ];
 

@@ -15,6 +15,10 @@
   import JsonFormatterTool from '../../../components/tools/JsonFormatterTool.svelte';
   import LoremIpsumTool from '../../../components/tools/LoremIpsumTool.svelte';
   import MarkdownPreviewTool from '../../../components/tools/MarkdownPreviewTool.svelte';
+  import UnitConverterTool from '../../../components/tools/UnitConverterTool.svelte';
+  import TimestampConverterTool from '../../../components/tools/TimestampConverterTool.svelte';
+  import BaseConverterTool from '../../../components/tools/BaseConverterTool.svelte';
+  import PercentageCalculatorTool from '../../../components/tools/PercentageCalculatorTool.svelte';
   import { getToolBySlug } from '$lib/tools';
   import type { Tool } from '$lib/types';
 
@@ -33,7 +37,11 @@
     'text-diff': TextDiffTool,
     'json-formatter': JsonFormatterTool,
     'lorem-ipsum': LoremIpsumTool,
-    'markdown-preview': MarkdownPreviewTool
+    'markdown-preview': MarkdownPreviewTool,
+    'unit-converter': UnitConverterTool,
+    'timestamp-converter': TimestampConverterTool,
+    'base-converter': BaseConverterTool,
+    'percentage-calculator': PercentageCalculatorTool
   } as const;
 
   let slug = '';
