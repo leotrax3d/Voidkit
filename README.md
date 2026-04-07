@@ -10,7 +10,11 @@
 [![Open issues](https://img.shields.io/github/issues/leotrax3d/voidkit?style=flat)](https://github.com/leotrax3d/voidkit/issues)
 
 Minimal developer utilities toolkit. A fast, accessible, and extensible collection of tools for developers, built with modern web technologies.
-<img width="1901" height="1028" alt="image" src="https://github.com/user-attachments/assets/4303ead5-3218-4367-9afe-26920fab0289" />
+
+<img width="1897" height="1023" alt="image" src="https://github.com/user-attachments/assets/413f3874-bf86-42ba-a8b3-0ae1a2c738bf" />
+<img width="1918" height="1027" alt="image" src="https://github.com/user-attachments/assets/1bc9336a-b25b-46d4-b869-143f6e50485a" />
+
+
 
 ## Tech Stack
 
