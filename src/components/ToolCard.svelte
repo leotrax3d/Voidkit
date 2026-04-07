@@ -1,36 +1,54 @@
 <script lang="ts">
+  import { addRecentTool } from '$lib/utils/recent';
   import type { Tool } from '$lib/types';
 
   export let tool: Tool;
+
+  function handleCardClick(): void {
+    addRecentTool(tool.slug);
+  }
 </script>
 
-<article class="card">
-  <p class="category">{tool.category}</p>
-  <div class="header-row">
-    <svelte:component this={tool.icon} aria-hidden="true" size={17} />
-    <h3>{tool.name}</h3>
+<a class="card" href={`/tools/${tool.slug}`} aria-label={`Open ${tool.name}`} on:click={handleCardClick}>
+  <div class="card-inner">
+    <p class="category">{tool.category}</p>
+    <div class="header-row">
+      <svelte:component this={tool.icon} aria-hidden="true" size={18} />
+      <h3>{tool.name}</h3>
+    </div>
+    <p class="description">{tool.description}</p>
   </div>
-  <p class="description">{tool.description}</p>
-  <a class="card-link" href={`/tools/${tool.slug}`} aria-label={`Open ${tool.name}`}>
-    Open
-  </a>
-</article>
+</a>
 
 <style>
   .card {
     display: grid;
-    gap: var(--space-1);
-    grid-template-rows: auto auto 1fr auto;
     min-height: 224px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: var(--space-2);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 150ms ease;
+  }
+
+  .card:hover,
+  .card:focus-visible {
+    border-color: var(--accent);
+    outline: none;
+  }
+
+  .card-inner {
+    display: grid;
+    gap: var(--space-1);
+    grid-template-rows: auto auto 1fr;
   }
 
   .category {
     font-size: 12px;
     color: var(--text-muted);
+    margin: 0;
   }
 
   .header-row {
@@ -42,22 +60,18 @@
   h3 {
     font-size: 16px;
     color: var(--text-primary);
+    margin: 0;
   }
 
   .description {
     font-size: 14px;
     color: var(--text-muted);
-  }
-
-  .card-link {
-    width: fit-content;
-    font-size: 14px;
-    color: var(--accent);
-    border-color: var(--accent);
-  }
-
-  .card-link:hover,
-  .card-link:focus-visible {
-    background: #1f1f1f;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
   }
 </style>

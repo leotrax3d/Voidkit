@@ -2,11 +2,13 @@
   import '../app.css';
 
   import Sidebar from '../components/Sidebar.svelte';
+  import ShortcutHelpModal from '../components/ShortcutHelpModal.svelte';
   import { tools } from '$lib/tools';
   import { page } from '$app/stores';
 
   let sidebarCollapsed = false;
   let mobileMenuOpen = false;
+  let showHelp = false;
 
   $: currentPath = $page.url.pathname;
 
@@ -21,7 +23,41 @@
   function closeMobileMenu(): void {
     mobileMenuOpen = false;
   }
+
+  function focusSearchInput(): void {
+    const searchInput = document.querySelector('input[type="search"]') as HTMLInputElement | null;
+    if (searchInput) {
+      searchInput.focus();
+    }
+  }
+
+  function handleKeydown(e: KeyboardEvent): void {
+    const isMeta = e.ctrlKey || e.metaKey || e.shiftKey || e.altKey;
+
+    if (e.key === '/' && !isMeta) {
+      e.preventDefault();
+      focusSearchInput();
+    } else if (e.key === 'Escape') {
+      showHelp = false;
+      focusSearchInput();
+      const searchInput = document.querySelector('input[type="search"]') as HTMLInputElement | null;
+      if (searchInput) {
+        searchInput.value = '';
+        searchInput.blur();
+      }
+    } else if (e.key === '?') {
+      e.preventDefault();
+      showHelp = !showHelp;
+    }
+  }
 </script>
+
+<svelte:head>
+  <title>{$page.data.title || 'Voidkit'}</title>
+  <meta name="description" content={$page.data.description || 'Minimal developer utilities'} />
+</svelte:head>
+
+<svelte:window on:keydown={handleKeydown} />
 
 <div class="app-shell">
   <Sidebar
@@ -68,6 +104,8 @@
     on:click={closeMobileMenu}
   ></button>
 {/if}
+
+<ShortcutHelpModal bind:open={showHelp} />
 
 <style>
   .app-shell {

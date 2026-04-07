@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
+  import Breadcrumb from '../../../components/Breadcrumb.svelte';
   import RandomNumberTool from '../../../components/tools/RandomNumberTool.svelte';
   import DiceRollerTool from '../../../components/tools/DiceRollerTool.svelte';
   import CoinFlipTool from '../../../components/tools/CoinFlipTool.svelte';
@@ -72,6 +73,7 @@
     <a href="/">Back to overview</a>
   </section>
 {:else}
+  <Breadcrumb slug={slug || ''} />
   <svelte:component this={ActiveComponent} {tool} />
 {/if}
 

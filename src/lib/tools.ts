@@ -233,3 +233,8 @@ export function getGroupedTools(source: Tool[] = tools): CategoryGroup[] {
       tools: groupedTools.sort((a, b) => a.name.localeCompare(b.name))
     }));
 }
+
+export const stats = {
+  tools: tools.length,
+  categories: categories.length
+};
