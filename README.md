@@ -2,8 +2,6 @@
 
 Minimal developer utilities toolkit. A fast, accessible, and extensible collection of tools for developers, built with modern web technologies.
 
-**Live Demo**: [voidkit.dev](https://voidkit.dev)
-
 ## Tech Stack
 
 - **Framework**: [SvelteKit 2.0](https://kit.svelte.dev) + [Svelte 5](https://svelte.dev)
@@ -14,13 +12,13 @@ Minimal developer utilities toolkit. A fast, accessible, and extensible collecti
 
 ## Features
 
-- ⚡ **Fast & Minimal** — Zero external UI libraries, optimized CSS, prerendered all routes
-- 🎨 **Dark Theme** — Professional dark mode with lime accent (#a3e635)
-- ⌨️ **Keyboard Native** — Global shortcuts (/, ?, Esc), keyboard navigation, full a11y support
-- 📦 **Client-Side Only** — All tools run entirely in the browser (no server-side processing)
-- 💾 **Persistent State** — Tool history and preferences saved to localStorage
-- 🔍 **Command Palette** — Live search with match highlighting and recent tool tracking
-- 📱 **Responsive** — Works seamlessly on desktop, tablet, and mobile
+-  **Fast & Minimal** — Zero external UI libraries, optimized CSS, prerendered all routes
+-  **Dark Theme** — Professional dark mode with lime accent (#a3e635)
+-  **Keyboard Native** — Global shortcuts (/, ?, Esc), keyboard navigation, full a11y support
+-  **Client-Side Only** — All tools run entirely in the browser (no server-side processing)
+-  **Persistent State** — Tool history and preferences saved to localStorage
+-  **Command Palette** — Live search with match highlighting and recent tool tracking
+-  **Responsive** — Works seamlessly on desktop, tablet, and mobile
 
 ## Getting Started
 
@@ -271,14 +269,14 @@ src/
 
 ## Code Standards
 
-- ✅ TypeScript strict mode throughout
-- ✅ No inline styles (CSS custom properties + classes only)
-- ✅ No external UI libraries
-- ✅ Full keyboard accessibility
-- ✅ Shared utility functions (color.ts, copy action, recent tracking)
-- ✅ localStorage keys prefixed with `voidkit_`
-- ✅ All tool routes prerendered
-- ✅ No unused imports, no console.logs
+-  TypeScript strict mode throughout
+-  No inline styles (CSS custom properties + classes only)
+-  No external UI libraries
+-  Full keyboard accessibility
+-  Shared utility functions (color.ts, copy action, recent tracking)
+-  localStorage keys prefixed with `voidkit_`
+-  All tool routes prerendered
+-  No unused imports, no console.logs
 
 ## Browser Support
 
@@ -297,7 +295,7 @@ src/
 
 ## License
 
-MIT © 2026 Voidkit Contributors
+MIT
 
 ---
 
