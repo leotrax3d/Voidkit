@@ -5,6 +5,9 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![Vite](https://img.shields.io/badge/Vite-7.x-646cff?logo=vite&logoColor=white)](https://vitejs.dev)
 [![Docker](https://img.shields.io/badge/Docker-ready-2496ed?logo=docker&logoColor=white)](docker-compose.yml)
+[![GitHub stars](https://img.shields.io/github/stars/leotrax3d/voidkit?style=flat)](https://github.com/leotrax3d/voidkit/stargazers)
+[![Last commit](https://img.shields.io/github/last-commit/leotrax3d/voidkit?style=flat)](https://github.com/leotrax3d/voidkit/commits/main)
+[![Open issues](https://img.shields.io/github/issues/leotrax3d/voidkit?style=flat)](https://github.com/leotrax3d/voidkit/issues)
 
 Minimal developer utilities toolkit. A fast, accessible, and extensible collection of tools for developers, built with modern web technologies.
 <img width="1901" height="1028" alt="image" src="https://github.com/user-attachments/assets/4303ead5-3218-4367-9afe-26920fab0289" />
