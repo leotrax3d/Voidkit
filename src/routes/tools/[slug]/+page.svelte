@@ -10,6 +10,11 @@
   import UuidGeneratorTool from '../../../components/tools/UuidGeneratorTool.svelte';
   import Base64Tool from '../../../components/tools/Base64Tool.svelte';
   import QrCodeTool from '../../../components/tools/QrCodeTool.svelte';
+  import CharacterCounterTool from '../../../components/tools/CharacterCounterTool.svelte';
+  import TextDiffTool from '../../../components/tools/TextDiffTool.svelte';
+  import JsonFormatterTool from '../../../components/tools/JsonFormatterTool.svelte';
+  import LoremIpsumTool from '../../../components/tools/LoremIpsumTool.svelte';
+  import MarkdownPreviewTool from '../../../components/tools/MarkdownPreviewTool.svelte';
   import { getToolBySlug } from '$lib/tools';
   import type { Tool } from '$lib/types';
 
@@ -23,7 +28,12 @@
     'hash-generator': HashGeneratorTool,
     'uuid-generator': UuidGeneratorTool,
     base64: Base64Tool,
-    'qr-code': QrCodeTool
+    'qr-code': QrCodeTool,
+    'character-counter': CharacterCounterTool,
+    'text-diff': TextDiffTool,
+    'json-formatter': JsonFormatterTool,
+    'lorem-ipsum': LoremIpsumTool,
+    'markdown-preview': MarkdownPreviewTool
   } as const;
 
   let slug = '';

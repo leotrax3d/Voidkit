@@ -1,11 +1,15 @@
 import {
   Binary,
+  Braces,
   Coins,
   Dice5,
   Dices,
+  Diff,
   Fingerprint,
+  FileText,
   Hash,
   KeyRound,
+  ScrollText,
   ListOrdered,
   QrCode,
   Users
@@ -92,6 +96,46 @@ export const tools: Tool[] = [
     category: 'Security & Encoding',
     icon: QrCode,
     slug: 'qr-code'
+  },
+  {
+    id: 'character-counter',
+    name: 'Character Counter',
+    description: 'Track characters, words, sentences, paragraphs, lines, and reading time.',
+    category: 'Text & Data',
+    icon: FileText,
+    slug: 'character-counter'
+  },
+  {
+    id: 'text-diff',
+    name: 'Text Diff',
+    description: 'Compare two text blocks with a simple line-based diff.',
+    category: 'Text & Data',
+    icon: Diff,
+    slug: 'text-diff'
+  },
+  {
+    id: 'json-formatter',
+    name: 'JSON Formatter',
+    description: 'Format, minify, and validate JSON with client-side highlighting.',
+    category: 'Text & Data',
+    icon: Braces,
+    slug: 'json-formatter'
+  },
+  {
+    id: 'lorem-ipsum',
+    name: 'Lorem Ipsum Generator',
+    description: 'Generate classical Lorem Ipsum text by words, sentences, or paragraphs.',
+    category: 'Text & Data',
+    icon: ScrollText,
+    slug: 'lorem-ipsum'
+  },
+  {
+    id: 'markdown-preview',
+    name: 'Markdown Preview',
+    description: 'Edit Markdown with a live sanitized preview and formatting shortcuts.',
+    category: 'Text & Data',
+    icon: FileText,
+    slug: 'markdown-preview'
   }
 ];
 
