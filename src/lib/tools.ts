@@ -1,4 +1,15 @@
-import { Coins, Dice5, Dices, ListOrdered, Users } from 'lucide-svelte';
+import {
+  Binary,
+  Coins,
+  Dice5,
+  Dices,
+  Fingerprint,
+  Hash,
+  KeyRound,
+  ListOrdered,
+  QrCode,
+  Users
+} from 'lucide-svelte';
 import type { CategoryGroup, Tool } from '$lib/types';
 
 export const tools: Tool[] = [
@@ -6,41 +17,81 @@ export const tools: Tool[] = [
     id: 'random-number',
     name: 'Random Number Generator',
     description: 'Generate one or many random integers within a custom range.',
-    category: 'Zufall & Entscheidung',
+    category: 'Random & Decision',
     icon: Dice5,
     slug: 'random-number'
   },
   {
     id: 'dice-roller',
-    name: 'Wuerfel',
+    name: 'Dice Roller',
     description: 'Roll one or more dice and track your recent outcomes.',
-    category: 'Zufall & Entscheidung',
+    category: 'Random & Decision',
     icon: Dices,
     slug: 'dice-roller'
   },
   {
     id: 'coin-flip',
-    name: 'Muenzwurf',
+    name: 'Coin Flip',
     description: 'Flip a coin once or in batches with session statistics.',
-    category: 'Zufall & Entscheidung',
+    category: 'Random & Decision',
     icon: Coins,
     slug: 'coin-flip'
   },
   {
     id: 'list-randomizer',
-    name: 'Listenrandomizer',
+    name: 'List Randomizer',
     description: 'Shuffle line-based lists instantly with Fisher-Yates.',
-    category: 'Zufall & Entscheidung',
+    category: 'Random & Decision',
     icon: ListOrdered,
     slug: 'list-randomizer'
   },
   {
     id: 'group-splitter',
-    name: 'Gruppenteiler',
+    name: 'Group Splitter',
     description: 'Split names or items into random balanced groups.',
-    category: 'Zufall & Entscheidung',
+    category: 'Random & Decision',
     icon: Users,
     slug: 'group-splitter'
+  },
+  {
+    id: 'password-generator',
+    name: 'Password Generator',
+    description: 'Generate secure passwords with strength indicators.',
+    category: 'Security & Encoding',
+    icon: KeyRound,
+    slug: 'password-generator'
+  },
+  {
+    id: 'hash-generator',
+    name: 'Hash Generator',
+    description: 'Generate SHA hashes for text using the Web Crypto API.',
+    category: 'Security & Encoding',
+    icon: Hash,
+    slug: 'hash-generator'
+  },
+  {
+    id: 'uuid-generator',
+    name: 'UUID Generator',
+    description: 'Generate v4 UUIDs quickly and copy them individually.',
+    category: 'Security & Encoding',
+    icon: Fingerprint,
+    slug: 'uuid-generator'
+  },
+  {
+    id: 'base64',
+    name: 'Base64 Encoder/Decoder',
+    description: 'Encode or decode Base64 text in a live two-panel view.',
+    category: 'Security & Encoding',
+    icon: Binary,
+    slug: 'base64'
+  },
+  {
+    id: 'qr-code',
+    name: 'QR Code Generator',
+    description: 'Generate downloadable SVG QR codes client-side.',
+    category: 'Security & Encoding',
+    icon: QrCode,
+    slug: 'qr-code'
   }
 ];
 

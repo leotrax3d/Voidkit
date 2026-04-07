@@ -5,29 +5,29 @@
   export let tool: Tool;
 
   let result = '';
-  let kopfCount = 0;
-  let zahlCount = 0;
+  let headsCount = 0;
+  let tailsCount = 0;
   let multiCount = 10;
   let distribution = '';
   let copyMessage = '';
   let flipKey = 0;
 
   function flipCoin(): void {
-    const next = Math.random() < 0.5 ? 'KOPF' : 'ZAHL';
+    const next = Math.random() < 0.5 ? 'HEADS' : 'TAILS';
     result = next;
     flipKey += 1;
     copyMessage = '';
 
-    if (next === 'KOPF') {
-      kopfCount += 1;
+    if (next === 'HEADS') {
+      headsCount += 1;
     } else {
-      zahlCount += 1;
+      tailsCount += 1;
     }
   }
 
   function resetStats(): void {
-    kopfCount = 0;
-    zahlCount = 0;
+    headsCount = 0;
+    tailsCount = 0;
   }
 
   function flipMultiple(): void {
@@ -42,7 +42,7 @@
     }
 
     const tails = multiCount - heads;
-    distribution = `Kopf: ${heads} | Zahl: ${tails}`;
+    distribution = `Heads: ${heads} | Tails: ${tails}`;
   }
 
   async function copyOutput(): Promise<void> {
@@ -52,8 +52,8 @@
 
     const text = [
       result ? `Result: ${result}` : 'Result: -',
-      `Kopf: ${kopfCount}`,
-      `Zahl: ${zahlCount}`,
+      `Heads: ${headsCount}`,
+      `Tails: ${tailsCount}`,
       distribution || 'Distribution: -'
     ].join('\n');
 
@@ -78,8 +78,8 @@
     <button class="primary large" type="button" on:click={flipCoin}>Flip</button>
 
     <div class="stats-row">
-      <p>Kopf: {kopfCount}</p>
-      <p>Zahl: {zahlCount}</p>
+      <p>Heads: {headsCount}</p>
+      <p>Tails: {tailsCount}</p>
       <button type="button" on:click={resetStats}>Reset</button>
     </div>
 
@@ -95,7 +95,7 @@
 
   <section class="panel output" aria-live="polite">
     <div class="output-head">
-      <h2>Output</h2>
+      <h2>Result</h2>
       <button type="button" on:click={copyOutput}>Copy</button>
     </div>
 

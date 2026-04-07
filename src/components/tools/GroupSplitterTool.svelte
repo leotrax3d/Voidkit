@@ -61,7 +61,7 @@
     return groups
       .map((group, index) => {
         const rows = group.map((item) => `- ${item}`).join('\n');
-        return `Gruppe ${index + 1}\n${rows || '-'} `;
+        return `Group ${index + 1}\n${rows || '-'}`;
       })
       .join('\n\n')
       .trim();
@@ -111,7 +111,7 @@
 
   <section class="panel output" aria-live="polite">
     <div class="output-head">
-      <h2>Output</h2>
+      <h2>Result</h2>
       <button type="button" on:click={copyAll} disabled={groups.length === 0}>Copy all groups</button>
     </div>
 
@@ -121,7 +121,7 @@
       <div class="group-grid">
         {#each groups as group, index}
           <article class="group-block">
-            <h3>Gruppe {index + 1}</h3>
+            <h3>Group {index + 1}</h3>
             {#if group.length === 0}
               <p class="muted">Empty</p>
             {:else}

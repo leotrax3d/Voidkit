@@ -5,6 +5,11 @@
   import CoinFlipTool from '../../../components/tools/CoinFlipTool.svelte';
   import ListRandomizerTool from '../../../components/tools/ListRandomizerTool.svelte';
   import GroupSplitterTool from '../../../components/tools/GroupSplitterTool.svelte';
+  import PasswordGeneratorTool from '../../../components/tools/PasswordGeneratorTool.svelte';
+  import HashGeneratorTool from '../../../components/tools/HashGeneratorTool.svelte';
+  import UuidGeneratorTool from '../../../components/tools/UuidGeneratorTool.svelte';
+  import Base64Tool from '../../../components/tools/Base64Tool.svelte';
+  import QrCodeTool from '../../../components/tools/QrCodeTool.svelte';
   import { getToolBySlug } from '$lib/tools';
   import type { Tool } from '$lib/types';
 
@@ -13,7 +18,12 @@
     'dice-roller': DiceRollerTool,
     'coin-flip': CoinFlipTool,
     'list-randomizer': ListRandomizerTool,
-    'group-splitter': GroupSplitterTool
+    'group-splitter': GroupSplitterTool,
+    'password-generator': PasswordGeneratorTool,
+    'hash-generator': HashGeneratorTool,
+    'uuid-generator': UuidGeneratorTool,
+    base64: Base64Tool,
+    'qr-code': QrCodeTool
   } as const;
 
   let slug = '';
