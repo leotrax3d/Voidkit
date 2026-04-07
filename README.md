@@ -1,5 +1,11 @@
 # Voidkit
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![SvelteKit](https://img.shields.io/badge/SvelteKit-2.x-ff3e00?logo=svelte&logoColor=white)](https://kit.svelte.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Vite](https://img.shields.io/badge/Vite-7.x-646cff?logo=vite&logoColor=white)](https://vitejs.dev)
+[![Docker](https://img.shields.io/badge/Docker-ready-2496ed?logo=docker&logoColor=white)](docker-compose.yml)
+
 Minimal developer utilities toolkit. A fast, accessible, and extensible collection of tools for developers, built with modern web technologies.
 <img width="1901" height="1028" alt="image" src="https://github.com/user-attachments/assets/4303ead5-3218-4367-9afe-26920fab0289" />
 
