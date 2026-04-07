@@ -52,6 +52,33 @@ npm run check   # TypeScript + Svelte diagnostics
 npm run lint    # Static analysis
 ```
 
+## Self-Hosting with Docker
+
+**Option A - Docker Compose (recommended)**
+
+```bash
+curl -O https://raw.githubusercontent.com/leotrax3d/voidkit/main/docker-compose.yml
+docker compose up -d
+```
+
+Then open http://localhost:3000
+
+**Option B - Single Docker command**
+
+```bash
+docker run -p 3000:3000 ghcr.io/leotrax3d/voidkit:latest
+```
+
+**Option C - Build locally**
+
+```bash
+git clone https://github.com/leotrax3d/voidkit
+cd voidkit
+docker compose up -d --build
+```
+
+**Requirements:** Docker + Docker Compose (included in Docker Desktop)
+
 ## How to Add a Tool
 
 Adding a new tool requires 3 simple steps:

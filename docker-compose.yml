@@ -1,0 +1,7 @@
+# Self-host Voidkit: docker compose up -d
+services:
+  voidkit:
+    image: ghcr.io/leotrax3d/voidkit:latest
+    ports:
+      - "3000:3000"
+    restart: unless-stopped

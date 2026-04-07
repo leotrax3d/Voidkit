@@ -1,0 +1,11 @@
+node_modules
+.svelte-kit
+build
+.env
+.env.*
+.git
+.github
+README.md
+Dockerfile
+docker-compose.yml
+*.log
