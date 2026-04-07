@@ -89,17 +89,6 @@ newgrp docker
 docker ps
 ```
 
-If you see `denied` when pulling from `ghcr.io`, the package is likely still private. Make sure the container package visibility is set to **Public** in GitHub Packages.
-
-If you see `no matching manifest for linux/arm64/v8`, the image was published without arm64 support. The CI workflow now publishes both `linux/amd64` and `linux/arm64` images.
-
-After the next successful push to `main`, pull again:
-
-```bash
-docker pull ghcr.io/leotrax3d/voidkit:latest
-docker run -p 3000:3000 ghcr.io/leotrax3d/voidkit:latest
-```
-
 ## How to Add a Tool
 
 Adding a new tool requires 3 simple steps:
