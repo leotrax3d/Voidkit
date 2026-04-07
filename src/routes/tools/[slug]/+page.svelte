@@ -19,6 +19,10 @@
   import TimestampConverterTool from '../../../components/tools/TimestampConverterTool.svelte';
   import BaseConverterTool from '../../../components/tools/BaseConverterTool.svelte';
   import PercentageCalculatorTool from '../../../components/tools/PercentageCalculatorTool.svelte';
+  import ColorPickerTool from '../../../components/tools/ColorPickerTool.svelte';
+  import ContrastCheckerTool from '../../../components/tools/ContrastCheckerTool.svelte';
+  import GradientGeneratorTool from '../../../components/tools/GradientGeneratorTool.svelte';
+  import ShadowGeneratorTool from '../../../components/tools/ShadowGeneratorTool.svelte';
   import { getToolBySlug } from '$lib/tools';
   import type { Tool } from '$lib/types';
 
@@ -41,7 +45,11 @@
     'unit-converter': UnitConverterTool,
     'timestamp-converter': TimestampConverterTool,
     'base-converter': BaseConverterTool,
-    'percentage-calculator': PercentageCalculatorTool
+    'percentage-calculator': PercentageCalculatorTool,
+    'color-picker': ColorPickerTool,
+    'contrast-checker': ContrastCheckerTool,
+    'gradient-generator': GradientGeneratorTool,
+    'shadow-generator': ShadowGeneratorTool
   } as const;
 
   let slug = '';

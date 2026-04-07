@@ -1,20 +1,24 @@
 import {
+  ArrowLeftRight,
   Binary,
   Braces,
   Clock3,
   Coins,
+  ContrastIcon,
   Dice5,
   Dices,
   Diff,
-  ArrowLeftRight,
   Fingerprint,
   FileText,
   Hash,
   KeyRound,
-  ScrollText,
+  Layers3Icon,
   ListOrdered,
-  QrCode,
+  PaletteIcon,
   Percent,
+  QrCode,
+  ScrollText,
+  SparklesIcon,
   Users
 } from 'lucide-svelte';
 import type { CategoryGroup, Tool } from '$lib/types';
@@ -171,6 +175,38 @@ export const tools: Tool[] = [
     category: 'Calculators & Converters',
     icon: Percent,
     slug: 'percentage-calculator'
+  },
+  {
+    id: 'color-picker',
+    name: 'Color Picker',
+    description: 'Pick colors and convert between HEX, RGB, HSL, HSB, and CMYK.',
+    category: 'Design & Color',
+    icon: PaletteIcon,
+    slug: 'color-picker'
+  },
+  {
+    id: 'contrast-checker',
+    name: 'Contrast Checker',
+    description: 'Check WCAG contrast ratios and compliance for two colors.',
+    category: 'Design & Color',
+    icon: ContrastIcon,
+    slug: 'contrast-checker'
+  },
+  {
+    id: 'gradient-generator',
+    name: 'Gradient Generator',
+    description: 'Build linear, radial, and conic gradients with editable stops.',
+    category: 'Design & Color',
+    icon: SparklesIcon,
+    slug: 'gradient-generator'
+  },
+  {
+    id: 'shadow-generator',
+    name: 'CSS Shadow Generator',
+    description: 'Create box-shadow and text-shadow CSS with live previews.',
+    category: 'Design & Color',
+    icon: Layers3Icon,
+    slug: 'shadow-generator'
   }
 ];
 
