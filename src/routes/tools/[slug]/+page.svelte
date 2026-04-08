@@ -24,6 +24,8 @@
   import ContrastCheckerTool from '../../../components/tools/ContrastCheckerTool.svelte';
   import GradientGeneratorTool from '../../../components/tools/GradientGeneratorTool.svelte';
   import ShadowGeneratorTool from '../../../components/tools/ShadowGeneratorTool.svelte';
+  import CronExpressionBuilderTool from '../../../components/tools/CronExpressionBuilderTool.svelte';
+  import ColorPaletteGeneratorTool from '../../../components/tools/ColorPaletteGeneratorTool.svelte';
   import { getToolBySlug } from '$lib/tools';
   import type { Tool } from '$lib/types';
 
@@ -50,7 +52,9 @@
     'color-picker': ColorPickerTool,
     'contrast-checker': ContrastCheckerTool,
     'gradient-generator': GradientGeneratorTool,
-    'shadow-generator': ShadowGeneratorTool
+    'shadow-generator': ShadowGeneratorTool,
+    'cron-expression-builder': CronExpressionBuilderTool,
+    'color-palette-generator': ColorPaletteGeneratorTool
   } as const;
 
   let slug = '';

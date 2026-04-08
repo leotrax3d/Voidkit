@@ -207,6 +207,22 @@ export const tools: Tool[] = [
     category: 'Design & Color',
     icon: Layers3Icon,
     slug: 'shadow-generator'
+  },
+  {
+    id: 'cron-expression-builder',
+    name: 'Cron Expression Builder',
+    description: 'Create, parse, and validate POSIX cron expressions with next run previews.',
+    category: 'Development',
+    icon: Clock3,
+    slug: 'cron-expression-builder'
+  },
+  {
+    id: 'color-palette-generator',
+    name: 'Color Palette Generator',
+    description: 'Generate harmony palettes with shades, WCAG contrast, and export formats.',
+    category: 'Design & Color',
+    icon: PaletteIcon,
+    slug: 'color-palette-generator'
   }
 ];
 
