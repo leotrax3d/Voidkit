@@ -139,7 +139,7 @@ export const tools: Tool[] = [
   {
     id: 'crypto-inspector',
     name: 'Crypto String Inspector',
-    description: 'Detect likely encodings and token formats such as JWT, hex, and Base variants.',
+    description: 'Classify, validate, and explain crypto-like strings with confidence scoring and JSON reports.',
     category: 'Crypto & Ciphers',
     icon: Fingerprint,
     slug: 'crypto-inspector'
