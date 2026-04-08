@@ -26,6 +26,16 @@
   import ShadowGeneratorTool from '../../../components/tools/ShadowGeneratorTool.svelte';
   import CronExpressionBuilderTool from '../../../components/tools/CronExpressionBuilderTool.svelte';
   import ColorPaletteGeneratorTool from '../../../components/tools/ColorPaletteGeneratorTool.svelte';
+  import CaesarCipherTool from '../../../components/tools/CaesarCipherTool.svelte';
+  import VigenereCipherTool from '../../../components/tools/VigenereCipherTool.svelte';
+  import PlayfairCipherTool from '../../../components/tools/PlayfairCipherTool.svelte';
+  import HillCipherTool from '../../../components/tools/HillCipherTool.svelte';
+  import SubstitutionCipherTool from '../../../components/tools/SubstitutionCipherTool.svelte';
+  import ColumnarTranspositionTool from '../../../components/tools/ColumnarTranspositionTool.svelte';
+  import MorseCodeTool from '../../../components/tools/MorseCodeTool.svelte';
+  import JwtDecoderTool from '../../../components/tools/JwtDecoderTool.svelte';
+  import Base32Base58Tool from '../../../components/tools/Base32Base58Tool.svelte';
+  import CryptoInspectorTool from '../../../components/tools/CryptoInspectorTool.svelte';
   import { getToolBySlug } from '$lib/tools';
   import type { Tool } from '$lib/types';
 
@@ -54,7 +64,17 @@
     'gradient-generator': GradientGeneratorTool,
     'shadow-generator': ShadowGeneratorTool,
     'cron-expression-builder': CronExpressionBuilderTool,
-    'color-palette-generator': ColorPaletteGeneratorTool
+    'color-palette-generator': ColorPaletteGeneratorTool,
+    'caesar-cipher': CaesarCipherTool,
+    'vigenere-cipher': VigenereCipherTool,
+    'playfair-cipher': PlayfairCipherTool,
+    'hill-cipher': HillCipherTool,
+    'substitution-cipher': SubstitutionCipherTool,
+    'columnar-transposition': ColumnarTranspositionTool,
+    'morse-code': MorseCodeTool,
+    'jwt-decoder': JwtDecoderTool,
+    'base32-base58': Base32Base58Tool,
+    'crypto-inspector': CryptoInspectorTool
   } as const;
 
   let slug = '';

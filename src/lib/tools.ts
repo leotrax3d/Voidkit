@@ -65,6 +65,86 @@ export const tools: Tool[] = [
     slug: 'group-splitter'
   },
   {
+    id: 'caesar-cipher',
+    name: 'Caesar Cipher',
+    description: 'Encrypt or decrypt text with a configurable Caesar shift.',
+    category: 'Crypto & Ciphers',
+    icon: KeyRound,
+    slug: 'caesar-cipher'
+  },
+  {
+    id: 'vigenere-cipher',
+    name: 'Vigenere Cipher',
+    description: 'Apply keyword-based polyalphabetic encryption and decryption.',
+    category: 'Crypto & Ciphers',
+    icon: KeyRound,
+    slug: 'vigenere-cipher'
+  },
+  {
+    id: 'playfair-cipher',
+    name: 'Playfair Cipher',
+    description: 'Encrypt digraphs with a classic 5x5 Playfair matrix.',
+    category: 'Crypto & Ciphers',
+    icon: Braces,
+    slug: 'playfair-cipher'
+  },
+  {
+    id: 'hill-cipher',
+    name: 'Hill Cipher (2x2)',
+    description: 'Matrix-based Hill cipher for educational encryption and decryption.',
+    category: 'Crypto & Ciphers',
+    icon: Layers3Icon,
+    slug: 'hill-cipher'
+  },
+  {
+    id: 'substitution-cipher',
+    name: 'Substitution Cipher',
+    description: 'Use a custom or randomized monoalphabetic substitution map.',
+    category: 'Crypto & Ciphers',
+    icon: ArrowLeftRight,
+    slug: 'substitution-cipher'
+  },
+  {
+    id: 'columnar-transposition',
+    name: 'Columnar Transposition',
+    description: 'Transpose plaintext columns using a sortable keyword.',
+    category: 'Crypto & Ciphers',
+    icon: ListOrdered,
+    slug: 'columnar-transposition'
+  },
+  {
+    id: 'morse-code',
+    name: 'Morse Code Translator',
+    description: 'Convert text to Morse code and back with word separators.',
+    category: 'Crypto & Ciphers',
+    icon: FileText,
+    slug: 'morse-code'
+  },
+  {
+    id: 'jwt-decoder',
+    name: 'JWT Decoder',
+    description: 'Decode JWT header and payload locally without sending data anywhere.',
+    category: 'Crypto & Ciphers',
+    icon: Braces,
+    slug: 'jwt-decoder'
+  },
+  {
+    id: 'base32-base58',
+    name: 'Base32/Base58 Converter',
+    description: 'Encode and decode Base32 or Base58 values in one view.',
+    category: 'Crypto & Ciphers',
+    icon: Binary,
+    slug: 'base32-base58'
+  },
+  {
+    id: 'crypto-inspector',
+    name: 'Crypto String Inspector',
+    description: 'Detect likely encodings and token formats such as JWT, hex, and Base variants.',
+    category: 'Crypto & Ciphers',
+    icon: Fingerprint,
+    slug: 'crypto-inspector'
+  },
+  {
     id: 'password-generator',
     name: 'Password Generator',
     description: 'Generate secure passwords with strength indicators.',

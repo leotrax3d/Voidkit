@@ -62,7 +62,8 @@
     return text.replace(regex, '<mark>$1</mark>');
   }
 
-  function handleKeydown(e: KeyboardEvent): void {
+  function handleKeydown(event: CustomEvent<KeyboardEvent>): void {
+    const e = event.detail;
     const allFilteredTools = normalizedQuery ? filteredTools : recentTools.length > 0 ? recentTools : filteredTools;
     
     if (e.key === 'ArrowDown') {
@@ -86,9 +87,9 @@
   </div>
 
   {#if !collapsed}
-    <SearchInput bind:value={query} />
+    <SearchInput bind:value={query} on:keydown={handleKeydown} />
 
-    <nav aria-label="Tool categories" on:keydown={handleKeydown}>
+    <nav aria-label="Tool categories">
       {#if normalizedQuery && groupedTools.length === 0}
         <p class="empty">No tools found for '{normalizedQuery}'.</p>
       {:else if !normalizedQuery && recentTools.length > 0}

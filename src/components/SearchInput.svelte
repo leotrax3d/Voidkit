@@ -1,8 +1,12 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
+
   export let value = '';
   export let id = 'search-tools';
   export let label = 'Search tools';
   export let placeholder = 'Search tools...';
+
+  const dispatch = createEventDispatcher<{ keydown: KeyboardEvent }>();
 </script>
 
 <div class="search-input">
@@ -14,6 +18,7 @@
     placeholder={placeholder}
     autocomplete="off"
     spellcheck="false"
+    on:keydown={(event) => dispatch('keydown', event)}
   />
 </div>
 
