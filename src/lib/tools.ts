@@ -2,6 +2,7 @@ import {
   ArrowLeftRight,
   Binary,
   Braces,
+  Camera,
   Clock3,
   Coins,
   ContrastIcon,
@@ -375,6 +376,14 @@ export const tools: Tool[] = [
     category: 'Development',
     icon: Clock3,
     slug: 'cron-expression-builder'
+  },
+  {
+    id: 'camera-finger-counter',
+    name: 'Camera Finger Counter',
+    description: 'Count raised fingers in real time with on-device hand landmark detection.',
+    category: 'Development',
+    icon: Camera,
+    slug: 'camera-finger-counter'
   },
   {
     id: 'color-palette-generator',

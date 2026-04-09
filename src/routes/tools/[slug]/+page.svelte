@@ -26,6 +26,7 @@
   import ShadowGeneratorTool from '../../../components/tools/ShadowGeneratorTool.svelte';
   import CronExpressionBuilderTool from '../../../components/tools/CronExpressionBuilderTool.svelte';
   import ColorPaletteGeneratorTool from '../../../components/tools/ColorPaletteGeneratorTool.svelte';
+  import CameraFingerCounterTool from '../../../components/tools/CameraFingerCounterTool.svelte';
   import CaesarCipherTool from '../../../components/tools/CaesarCipherTool.svelte';
   import VigenereCipherTool from '../../../components/tools/VigenereCipherTool.svelte';
   import PlayfairCipherTool from '../../../components/tools/PlayfairCipherTool.svelte';
@@ -74,6 +75,7 @@
     'gradient-generator': GradientGeneratorTool,
     'shadow-generator': ShadowGeneratorTool,
     'cron-expression-builder': CronExpressionBuilderTool,
+    'camera-finger-counter': CameraFingerCounterTool,
     'color-palette-generator': ColorPaletteGeneratorTool,
     'caesar-cipher': CaesarCipherTool,
     'vigenere-cipher': VigenereCipherTool,
