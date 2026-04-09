@@ -20,6 +20,7 @@ import {
   QrCode,
   ScrollText,
   SparklesIcon,
+  Mic,
   Users
 } from 'lucide-svelte';
 import type { CategoryGroup, Tool } from '$lib/types';
@@ -384,6 +385,14 @@ export const tools: Tool[] = [
     category: 'Development',
     icon: Camera,
     slug: 'camera-finger-counter'
+  },
+  {
+    id: 'applause-meter',
+    name: 'Applause Meter',
+    description: 'Measure live clap intensity and applause score from your microphone.',
+    category: 'Audio & Signal',
+    icon: Mic,
+    slug: 'applause-meter'
   },
   {
     id: 'color-palette-generator',
