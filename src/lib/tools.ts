@@ -145,6 +145,86 @@ export const tools: Tool[] = [
     slug: 'crypto-inspector'
   },
   {
+    id: 'affine-cipher-advanced',
+    name: 'Affine Cipher',
+    description: 'Encode and decode affine substitutions with strict key invertibility checks.',
+    category: 'Crypto & Ciphers',
+    icon: KeyRound,
+    slug: 'affine-cipher-advanced'
+  },
+  {
+    id: 'polybius-square',
+    name: 'Polybius Square',
+    description: 'Convert letters to grid coordinates and decode coordinate pairs back to text.',
+    category: 'Crypto & Ciphers',
+    icon: Braces,
+    slug: 'polybius-square'
+  },
+  {
+    id: 'bacon-cipher',
+    name: 'Bacon Cipher',
+    description: 'Encode letters to A/B five-symbol groups and decode validated A/B streams.',
+    category: 'Crypto & Ciphers',
+    icon: Binary,
+    slug: 'bacon-cipher'
+  },
+  {
+    id: 'beaufort-cipher',
+    name: 'Beaufort Cipher',
+    description: 'Use reciprocal keyword substitution for both encryption and decryption.',
+    category: 'Crypto & Ciphers',
+    icon: KeyRound,
+    slug: 'beaufort-cipher'
+  },
+  {
+    id: 'autokey-cipher',
+    name: 'Autokey Cipher',
+    description: 'Apply keyword-driven polyalphabetic transforms with dynamic key continuation.',
+    category: 'Crypto & Ciphers',
+    icon: KeyRound,
+    slug: 'autokey-cipher'
+  },
+  {
+    id: 'gronsfeld-cipher',
+    name: 'Gronsfeld Cipher',
+    description: 'Shift letters with a numeric key sequence and strict key format validation.',
+    category: 'Crypto & Ciphers',
+    icon: Binary,
+    slug: 'gronsfeld-cipher'
+  },
+  {
+    id: 'porta-cipher',
+    name: 'Porta Cipher',
+    description: 'Use classical reciprocal keyed substitution based on alphabet pair tables.',
+    category: 'Crypto & Ciphers',
+    icon: ArrowLeftRight,
+    slug: 'porta-cipher'
+  },
+  {
+    id: 'adfgx',
+    name: 'ADFGX Cipher',
+    description: 'Apply ADFGX fractionation and columnar transposition with keyed square settings.',
+    category: 'Crypto & Ciphers',
+    icon: ListOrdered,
+    slug: 'adfgx'
+  },
+  {
+    id: 'adfgvx',
+    name: 'ADFGVX Cipher',
+    description: 'Encode and decode ADFGVX text with a 6x6 keyed square and transposition stage.',
+    category: 'Crypto & Ciphers',
+    icon: ListOrdered,
+    slug: 'adfgvx'
+  },
+  {
+    id: 'nihilist-cipher',
+    name: 'Nihilist Cipher',
+    description: 'Use Polybius-based numeric addition with a repeating keyed number stream.',
+    category: 'Crypto & Ciphers',
+    icon: Layers3Icon,
+    slug: 'nihilist-cipher'
+  },
+  {
     id: 'password-generator',
     name: 'Password Generator',
     description: 'Generate secure passwords with strength indicators.',

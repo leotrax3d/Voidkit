@@ -700,11 +700,14 @@ function likelyPeriods(input: string): number[] {
     candidates.push({ period, score: average + bonus });
   }
 
-  return candidates
+  const ranked = candidates
     .filter((item) => item.score >= 0.05)
     .sort((a, b) => b.score - a.score)
     .slice(0, 4)
     .map((item) => item.period);
+
+  if (ranked.length > 0) return ranked;
+  return factorEvidence(letters).slice(0, 3);
 }
 
 function guessVigenereKey(input: string, period: number): string {
@@ -759,9 +762,14 @@ function detectVigenere(input: string, metadata: CipherMetadata): CipherCandidat
   const bestPeriod = periods[0];
   const keyGuess = guessVigenereKey(input, bestPeriod);
   const preview = keyGuess ? vigenereCipher(input, keyGuess, true) : input;
+  const rawScore = normalizedEnglishScore(input);
   const previewScore = normalizedEnglishScore(preview);
+  const improvement = previewScore - rawScore;
   const evidence = factorEvidence(letters).includes(bestPeriod) ? 15 : 0;
-  const score = roundScore(previewScore * 100 + evidence + periods.length * 6);
+  if (letters.length < 14 && bestPeriod <= 3) return null;
+  if (rawScore >= 0.55 && improvement < 0.08) return null;
+
+  const score = roundScore(previewScore * 72 + Math.max(0, improvement) * 90 + evidence + periods.length * 5);
 
   if (score < 45) return null;
 
@@ -834,13 +842,16 @@ function detectColumnarTransposition(input: string, metadata: CipherMetadata): C
 function detectPlayfair(input: string, metadata: CipherMetadata): CipherCandidate | null {
   const letters = letterText(input);
   if (letters.length < 8 || letters.length % 2 !== 0) return null;
+  if (metadata.letterRatio < 0.72) return null;
+  if (metadata.spaceRatio > 0.1) return null;
 
   const doubled = (letters.match(/([A-Z])\1/g) ?? []).length;
   const pairCount = letters.length / 2;
-  const oddPenalty = input.includes(' ') ? 6 : 0;
-  const score = roundScore(34 + Math.max(0, 30 - doubled * 8) + Math.min(pairCount, 8) * 3 - oddPenalty + (letters.length > 14 ? 8 : 0));
+  const spacingPenalty = metadata.spaceRatio > 0 ? 10 : 0;
+  const punctuationPenalty = metadata.punctuationRatio > 0.08 ? 8 : 0;
+  const score = roundScore(22 + Math.max(0, 20 - doubled * 8) + Math.min(pairCount, 8) * 2 + (letters.length > 14 ? 6 : 0) - spacingPenalty - punctuationPenalty);
 
-  if (score < 40) return null;
+  if (score < 46) return null;
 
   return makeCandidate(
     'playfair',

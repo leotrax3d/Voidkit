@@ -36,6 +36,16 @@
   import JwtDecoderTool from '../../../components/tools/JwtDecoderTool.svelte';
   import Base32Base58Tool from '../../../components/tools/Base32Base58Tool.svelte';
   import CryptoInspectorTool from '../../../components/tools/CryptoInspectorTool.svelte';
+  import AffineCipherAdvancedTool from '../../../components/tools/AffineCipherAdvancedTool.svelte';
+  import PolybiusSquareTool from '../../../components/tools/PolybiusSquareTool.svelte';
+  import BaconCipherTool from '../../../components/tools/BaconCipherTool.svelte';
+  import BeaufortCipherTool from '../../../components/tools/BeaufortCipherTool.svelte';
+  import AutokeyCipherTool from '../../../components/tools/AutokeyCipherTool.svelte';
+  import GronsfeldCipherTool from '../../../components/tools/GronsfeldCipherTool.svelte';
+  import PortaCipherTool from '../../../components/tools/PortaCipherTool.svelte';
+  import AdfgxCipherTool from '../../../components/tools/AdfgxCipherTool.svelte';
+  import AdfgvxCipherTool from '../../../components/tools/AdfgvxCipherTool.svelte';
+  import NihilistCipherTool from '../../../components/tools/NihilistCipherTool.svelte';
   import { getToolBySlug } from '$lib/tools';
   import type { Tool } from '$lib/types';
 
@@ -74,7 +84,17 @@
     'morse-code': MorseCodeTool,
     'jwt-decoder': JwtDecoderTool,
     'base32-base58': Base32Base58Tool,
-    'crypto-inspector': CryptoInspectorTool
+    'crypto-inspector': CryptoInspectorTool,
+    'affine-cipher-advanced': AffineCipherAdvancedTool,
+    'polybius-square': PolybiusSquareTool,
+    'bacon-cipher': BaconCipherTool,
+    'beaufort-cipher': BeaufortCipherTool,
+    'autokey-cipher': AutokeyCipherTool,
+    'gronsfeld-cipher': GronsfeldCipherTool,
+    'porta-cipher': PortaCipherTool,
+    adfgx: AdfgxCipherTool,
+    adfgvx: AdfgvxCipherTool,
+    'nihilist-cipher': NihilistCipherTool
   } as const;
 
   let slug = '';
