@@ -202,7 +202,7 @@
   </section>
 
   {#if errorMessage}
-    <section class="panel warning" aria-live="polite">
+    <section class="panel warning panel-subtle" aria-live="polite" aria-atomic="true">
       <p>{errorMessage}</p>
     </section>
   {/if}
@@ -285,7 +285,7 @@
   }
 
   .warning p {
-    color: #f08b8b;
+    color: var(--error-text);
   }
 
   .output-head {
@@ -311,6 +311,7 @@
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: var(--space-1);
+    background: var(--surface-subtle);
   }
 
   code {

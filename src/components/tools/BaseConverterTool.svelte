@@ -278,12 +278,12 @@
     padding: var(--space-1);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    background: #111111;
+    background: var(--surface-subtle);
   }
 
   .result-row div {
     display: grid;
-    gap: 4px;
+    gap: var(--space-half);
   }
 
   .label {
@@ -300,7 +300,7 @@
   }
 
   .error {
-    color: #f08b8b;
+    color: var(--error-text);
     font-size: 14px;
   }
 
@@ -315,7 +315,7 @@
   }
 
   .error {
-    border-color: #b84a4a;
+    border-color: var(--error-border);
   }
 
   h1 {

@@ -1,15 +1,28 @@
 :root {
   --bg: #0d0d0d;
   --surface: #161616;
+  --surface-hover: #1c1c1c;
+  --surface-subtle: #111111;
   --border: #242424;
+  --border-strong: #313131;
   --accent: #a3e635;
   --text-primary: #f0f0f0;
-  --text-muted: #666;
+  --text-muted: #8a8a8a;
+  --error: #ef4444;
+  --error-border: #b84a4a;
+  --error-text: #f08b8b;
+  --error-bg: rgba(239, 68, 68, 0.08);
+  --success: #78d992;
+  --warning: #e8b256;
+  --overlay-dark: rgba(13, 13, 13, 0.7);
+  --disabled-text: #656565;
+  --space-half: 4px;
   --radius: 6px;
   --space-1: 8px;
   --space-2: 16px;
   --space-3: 24px;
   --space-4: 32px;
+  --control-padding: 8px 12px;
 }
 
 * {
@@ -46,7 +59,7 @@ select {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 8px 12px;
+  padding: var(--control-padding);
 }
 
 input,
@@ -62,6 +75,7 @@ textarea:focus-visible,
 select:focus-visible,
 a:focus-visible {
   border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(163, 230, 53, 0.18);
   outline: none;
 }
 
@@ -70,7 +84,26 @@ button {
 }
 
 button:hover {
-  background: #1f1f1f;
+  background: var(--surface-hover);
+}
+
+button:disabled,
+input:disabled,
+textarea:disabled,
+select:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  color: var(--disabled-text);
+}
+
+button.primary {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+label {
+  color: var(--text-muted);
+  font-size: 14px;
 }
 
 input::placeholder,
@@ -97,7 +130,7 @@ mark {
 }
 
 .input-error {
-  border-color: #ef4444 !important;
+  border-color: var(--error) !important;
 }
 
 .empty-state {
@@ -106,4 +139,52 @@ mark {
   padding: var(--space-2);
   font-style: italic;
   font-size: 14px;
+}
+
+.field {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.field-row {
+  display: grid;
+  gap: var(--space-2);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.button-row,
+.actions,
+.buttons,
+.mode-row,
+.action-row {
+  display: flex;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+}
+
+.output-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+}
+
+.meta-info,
+.helper,
+.muted,
+.empty {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.status-error,
+.error {
+  color: var(--error-text);
+}
+
+.panel-subtle {
+  background: var(--surface-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
 }

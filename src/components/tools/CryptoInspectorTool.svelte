@@ -23,6 +23,7 @@
   let statusMessage = 'Paste a string to inspect classical ciphers.';
   let activeEntryIndex = 0;
   let debounceTimer: ReturnType<typeof setTimeout> | undefined;
+  let analysisVersion = 0;
 
   const EXAMPLES = {
     caesar: 'KHOOR ZRUOG',
@@ -40,7 +41,10 @@
     if (debounceTimer) clearTimeout(debounceTimer);
 
     const delay = inputText.length > 3000 ? 420 : 220;
+    const currentVersion = ++analysisVersion;
     debounceTimer = setTimeout(() => {
+      if (currentVersion !== analysisVersion) return;
+
       reportBundle = analyzeCipherBatch(inputText, mode);
       activeEntryIndex = 0;
       const first = reportBundle.reports[0]?.report;

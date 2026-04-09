@@ -67,7 +67,7 @@
   .two-panel { display: grid; gap: var(--space-2); grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .row { display: flex; gap: var(--space-1); flex-wrap: wrap; }
   .row .active { border-color: var(--accent); color: var(--accent); }
-  .error { color: #f08b8b; font-size: 14px; }
+  .error { color: var(--error-text); font-size: 14px; }
   textarea { width: 100%; resize: vertical; }
   @media (max-width: 900px) { .two-panel { grid-template-columns: 1fr; } }
 </style>

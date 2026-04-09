@@ -244,7 +244,7 @@
   }
 
   .errors p {
-    color: #f08b8b;
+    color: var(--error-text);
   }
 
   p,
@@ -273,10 +273,11 @@
 
   li {
     display: grid;
-    gap: 4px;
+    gap: var(--space-half);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: var(--space-1);
+    background: var(--surface-subtle);
   }
 
   .fade-in {

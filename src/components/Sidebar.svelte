@@ -1,5 +1,7 @@
 <script lang="ts">
   import { browser } from '$app/environment';
+  import { goto } from '$app/navigation';
+  import { onMount } from 'svelte';
   import SearchInput from './SearchInput.svelte';
   import { getGroupedTools, getToolBySlug, tools as allTools } from '$lib/tools';
   import { getRecentTools, addRecentTool } from '$lib/utils/recent';
@@ -10,20 +12,26 @@
   export let activePath = '/';
   export let collapsed = false;
   export let mobileOpen = false;
+  export let onToolNavigate: (() => void) | undefined = undefined;
 
   let query = '';
-  let expandedCategories: Set<string> = new Set();
+  let expandedCategories: Record<string, boolean> = {};
+  let wasSearching = false;
   let selectedToolIndex = -1;
 
-  // Load expanded categories from localStorage
-  $: if (browser && typeof window !== 'undefined') {
+  onMount(() => {
+    if (!browser) return;
     try {
       const stored = localStorage.getItem('voidkit_sidebar_expanded_categories');
-      expandedCategories = stored ? new Set(JSON.parse(stored)) : new Set();
-    } catch (e) {
-      expandedCategories = new Set();
+      const parsed = stored ? (JSON.parse(stored) as string[]) : [];
+      expandedCategories = parsed.reduce<Record<string, boolean>>((acc, category) => {
+        acc[category] = true;
+        return acc;
+      }, {});
+    } catch {
+      expandedCategories = {};
     }
-  }
+  });
 
   $: normalizedQuery = query.trim().toLowerCase();
   $: filteredTools = normalizedQuery
@@ -34,24 +42,66 @@
     : tools;
 
   $: groupedTools = getGroupedTools(filteredTools) as CategoryGroup[];
-  
+
   // Get recent tools
   $: recentTools = getRecentTools().map(recent => getToolBySlug(recent.slug)).filter(Boolean) as Tool[];
+  $: keyboardTools = normalizedQuery ? filteredTools : recentTools.length > 0 ? recentTools : filteredTools;
+  $: if (selectedToolIndex >= keyboardTools.length) {
+    selectedToolIndex = keyboardTools.length - 1;
+  }
+  $: if (normalizedQuery.length === 0 && selectedToolIndex >= recentTools.length) {
+    selectedToolIndex = recentTools.length - 1;
+  }
+  $: {
+    const searching = normalizedQuery.length > 0;
+    if (searching && !wasSearching) {
+      const next = { ...expandedCategories };
+      for (const group of groupedTools) {
+        next[group.category] = true;
+      }
+      expandedCategories = next;
+    }
+    wasSearching = searching;
+  }
 
   function isActiveTool(slug: string): boolean {
     return activePath === `/tools/${slug}`;
   }
 
   function toggleCategory(category: string): void {
-    if (expandedCategories.has(category)) {
-      expandedCategories.delete(category);
-    } else {
-      expandedCategories.add(category);
-    }
-    expandedCategories = expandedCategories; // Trigger reactivity
+    const next = { ...expandedCategories };
+    next[category] = !Boolean(next[category]);
+    expandedCategories = next;
     
     if (browser) {
-      localStorage.setItem('voidkit_sidebar_expanded_categories', JSON.stringify(Array.from(expandedCategories)));
+      try {
+        const openCategories = Object.keys(expandedCategories).filter((key) => expandedCategories[key]);
+        localStorage.setItem('voidkit_sidebar_expanded_categories', JSON.stringify(openCategories));
+      } catch {
+        // Persistence must never block the expand/collapse interaction.
+      }
+    }
+  }
+
+  function isGroupExpanded(category: string): boolean {
+    return Boolean(expandedCategories[category]);
+  }
+
+  function handleGroupToggle(category: string, event: Event): void {
+    const details = event.currentTarget as HTMLDetailsElement | null;
+    if (!details) return;
+
+    const next = { ...expandedCategories };
+    next[category] = details.open;
+    expandedCategories = next;
+
+    if (browser) {
+      try {
+        const openCategories = Object.keys(expandedCategories).filter((key) => expandedCategories[key]);
+        localStorage.setItem('voidkit_sidebar_expanded_categories', JSON.stringify(openCategories));
+      } catch {
+        // Persistence must never block the expand/collapse interaction.
+      }
     }
   }
 
@@ -62,21 +112,28 @@
     return text.replace(regex, '<mark>$1</mark>');
   }
 
+  async function openTool(slug: string): Promise<void> {
+    addRecentTool(slug);
+    selectedToolIndex = -1;
+    onToolNavigate?.();
+    await goto(`/tools/${slug}`);
+  }
+
   function handleKeydown(event: CustomEvent<KeyboardEvent>): void {
     const e = event.detail;
-    const allFilteredTools = normalizedQuery ? filteredTools : recentTools.length > 0 ? recentTools : filteredTools;
-    
+    const toolsForNavigation = keyboardTools;
+    if (!toolsForNavigation.length) return;
+
     if (e.key === 'ArrowDown') {
       e.preventDefault();
-      selectedToolIndex = Math.min(selectedToolIndex + 1, allFilteredTools.length - 1);
+      selectedToolIndex = Math.min(selectedToolIndex + 1, toolsForNavigation.length - 1);
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       selectedToolIndex = Math.max(selectedToolIndex - 1, 0);
-    } else if (e.key === 'Enter' && selectedToolIndex >= 0 && selectedToolIndex < allFilteredTools.length) {
+    } else if (e.key === 'Enter' && selectedToolIndex >= 0 && selectedToolIndex < toolsForNavigation.length) {
       e.preventDefault();
-      const tool = allFilteredTools[selectedToolIndex];
-      addRecentTool(tool.slug);
-      window.location.href = `/tools/${tool.slug}`;
+      const tool = toolsForNavigation[selectedToolIndex];
+      void openTool(tool.slug);
     }
   }
 </script>
@@ -102,7 +159,7 @@
                   class:active={isActiveTool(tool.slug)}
                   class:selected={selectedToolIndex === idx}
                   href={`/tools/${tool.slug}`}
-                  on:click={() => addRecentTool(tool.slug)}
+                  on:click|preventDefault={() => openTool(tool.slug)}
                 >
                   <svelte:component this={tool.icon} aria-hidden="true" size={15} />
                   <span>{tool.name}</span>
@@ -115,35 +172,36 @@
 
       {#if groupedTools.length > 0}
         {#each groupedTools as group}
-          <section class="group" aria-label={group.category}>
-            <button 
+          <details
+            class="group"
+            aria-label={group.category}
+            open={isGroupExpanded(group.category)}
+            on:toggle={(event) => handleGroupToggle(group.category, event)}
+          >
+            <summary
               class="category-header"
-              on:click={() => toggleCategory(group.category)}
-              aria-expanded={expandedCategories.has(group.category)}
             >
-              <span class="chevron">{expandedCategories.has(group.category) ? '▼' : '▶'}</span>
+              <span class="chevron" aria-hidden="true">▸</span>
               <h2>{group.category}</h2>
               <span class="count">({group.tools.length})</span>
-            </button>
-            
-            {#if expandedCategories.has(group.category)}
-              <ul>
-                {#each group.tools as tool, idx}
-                  <li>
-                    <a 
-                      class:active={isActiveTool(tool.slug)}
-                      class:selected={normalizedQuery && selectedToolIndex === idx}
-                      href={`/tools/${tool.slug}`}
-                      on:click={() => addRecentTool(tool.slug)}
-                    >
-                      <svelte:component this={tool.icon} aria-hidden="true" size={15} />
-                      <span>{@html highlightMatch(tool.name, normalizedQuery)}</span>
-                    </a>
-                  </li>
-                {/each}
-              </ul>
-            {/if}
-          </section>
+            </summary>
+
+            <ul>
+              {#each group.tools as tool}
+                <li>
+                  <a 
+                    class:active={isActiveTool(tool.slug)}
+                    class:selected={normalizedQuery.length > 0 && selectedToolIndex === filteredTools.findIndex((entry) => entry.slug === tool.slug)}
+                    href={`/tools/${tool.slug}`}
+                    on:click|preventDefault={() => openTool(tool.slug)}
+                  >
+                    <svelte:component this={tool.icon} aria-hidden="true" size={15} />
+                    <span>{@html highlightMatch(tool.name, normalizedQuery)}</span>
+                  </a>
+                </li>
+              {/each}
+            </ul>
+          </details>
         {/each}
       {/if}
     </nav>
@@ -169,6 +227,28 @@
     padding: var(--space-2);
     height: 100dvh;
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  aside::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  aside::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  aside::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  aside::-webkit-scrollbar-thumb:hover {
+    background: var(--border-strong);
+    background-clip: padding-box;
   }
 
   .top-row {
@@ -185,11 +265,16 @@
   nav {
     display: grid;
     gap: var(--space-2);
+    padding-bottom: var(--space-1);
   }
 
   .group {
     display: grid;
     gap: var(--space-1);
+  }
+
+  .group > ul {
+    margin-top: var(--space-1);
   }
 
   h2 {
@@ -216,30 +301,33 @@
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 8px 12px;
+    padding: var(--control-padding);
     background: var(--surface);
     color: var(--text-primary);
     font-size: 14px;
-    transition: border-color 120ms ease;
+    transition: border-color 120ms ease, background-color 120ms ease, color 120ms ease, transform 120ms ease;
   }
 
   li a.active {
     border-left-color: var(--accent);
-    border-right-color: var(--accent);
-    border-top-color: var(--accent);
-    border-bottom-color: var(--accent);
+    border-right-color: var(--border);
+    border-top-color: var(--border);
+    border-bottom-color: var(--border);
     color: var(--accent);
+    background: var(--surface-subtle);
   }
 
   li a.selected {
-    background: #1f1f1f;
+    background: var(--surface-hover);
+    border-right-color: var(--border-strong);
   }
 
   li a:hover,
   li a:focus-visible {
-    border-right-color: var(--accent);
-    border-top-color: var(--accent);
-    border-bottom-color: var(--accent);
+    border-left-color: var(--accent);
+    background: var(--surface-hover);
+    border-right-color: var(--border-strong);
+    transform: translateX(1px);
     outline: none;
   }
 
@@ -260,6 +348,11 @@
     text-align: left;
     cursor: pointer;
     transition: color 120ms ease;
+    list-style: none;
+  }
+
+  .category-header::-webkit-details-marker {
+    display: none;
   }
 
   .category-header:hover,
@@ -277,7 +370,12 @@
     display: inline-flex;
     font-size: 10px;
     color: var(--text-muted);
-    transition: color 120ms ease;
+    transition: color 120ms ease, transform 120ms ease;
+    transform: translateY(-1px);
+  }
+
+  .group[open] .chevron {
+    transform: rotate(90deg);
   }
 
   .category-header:hover .chevron {

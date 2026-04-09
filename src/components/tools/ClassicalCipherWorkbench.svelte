@@ -232,7 +232,7 @@
   }
 
   textarea.error {
-    border-color: #b84a4a;
+    border-color: var(--error-border);
   }
 
   .helper {
@@ -249,7 +249,7 @@
   }
 
   .error {
-    color: #f08b8b;
+    color: var(--error-text);
     font-size: 14px;
     margin: 0;
   }

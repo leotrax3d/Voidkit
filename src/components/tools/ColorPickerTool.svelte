@@ -340,7 +340,7 @@
   }
 
   .error {
-    color: #f08b8b;
+    color: var(--error-text);
     font-size: 14px;
   }
 

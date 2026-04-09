@@ -1,10 +1,9 @@
 <script lang="ts">
   import { getToolBySlug } from '$lib/tools';
-  import type { Tool } from '$lib/types';
 
   export let slug: string;
 
-  $: tool = getToolBySlug(slug) as Tool;
+  $: tool = getToolBySlug(slug);
   $: category = tool?.category || 'Unknown';
 </script>
 
@@ -26,7 +25,7 @@
 
 <style>
   .breadcrumb {
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-3);
   }
 
   ol {
@@ -59,7 +58,7 @@
   }
 
   .separator {
-    margin: 0 var(--space-half, 4px);
+    margin: 0 var(--space-half);
   }
 
   .current {

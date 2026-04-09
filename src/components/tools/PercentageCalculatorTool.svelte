@@ -357,11 +357,11 @@
 
   .result-box {
     display: grid;
-    gap: 4px;
+    gap: var(--space-half);
     padding: var(--space-1);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    background: #111111;
+    background: var(--surface-subtle);
   }
 
   .label {
@@ -377,11 +377,11 @@
   }
 
   .increase {
-    color: #a3e635;
+    color: var(--success);
   }
 
   .decrease {
-    color: #ef4444;
+    color: var(--error);
   }
 
   .none {
@@ -404,7 +404,7 @@
   }
 
   .error {
-    color: #f08b8b;
+    color: var(--error-text);
     font-size: 14px;
   }
 

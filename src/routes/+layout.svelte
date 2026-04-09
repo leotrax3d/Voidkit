@@ -39,10 +39,12 @@
       focusSearchInput();
     } else if (e.key === 'Escape') {
       showHelp = false;
+      closeMobileMenu();
       focusSearchInput();
       const searchInput = document.querySelector('input[type="search"]') as HTMLInputElement | null;
       if (searchInput) {
         searchInput.value = '';
+        searchInput.dispatchEvent(new Event('input', { bubbles: true }));
         searchInput.blur();
       }
     } else if (e.key === '?') {
@@ -65,6 +67,7 @@
     activePath={currentPath}
     collapsed={sidebarCollapsed}
     mobileOpen={mobileMenuOpen}
+    onToolNavigate={closeMobileMenu}
   />
 
   <div class="content-shell">
@@ -126,7 +129,7 @@
     justify-content: space-between;
     align-items: center;
     gap: var(--space-1);
-    padding: var(--space-2);
+    padding: var(--space-2) var(--space-3);
     border-bottom: 1px solid var(--border);
     background: var(--bg);
     position: sticky;
@@ -135,7 +138,7 @@
   }
 
   main {
-    padding: var(--space-2);
+    padding: var(--space-3);
   }
 
   .hamburger,
@@ -153,7 +156,7 @@
     z-index: 12;
     border: 0;
     border-radius: 0;
-    background: rgba(13, 13, 13, 0.7);
+    background: var(--overlay-dark);
   }
 
   @media (max-width: 900px) {
@@ -165,8 +168,12 @@
       display: none;
     }
 
+    header {
+      padding: var(--space-1) var(--space-2);
+    }
+
     main {
-      padding: var(--space-1);
+      padding: var(--space-2);
     }
   }
 </style>

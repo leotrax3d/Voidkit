@@ -112,16 +112,23 @@
 
 {#if !tool || !ActiveComponent}
   <section class="not-found">
-    <h1>Tool not found</h1>
-    <p>The requested tool does not exist in the registry.</p>
+    <h1>Tool unavailable</h1>
+    <p>The tool exists but is not wired to a page component yet.</p>
     <a href="/">Back to overview</a>
   </section>
 {:else}
-  <Breadcrumb slug={slug || ''} />
-  <svelte:component this={ActiveComponent} {tool} />
+  <section class="tool-shell">
+    <Breadcrumb slug={slug || ''} />
+    <svelte:component this={ActiveComponent} {tool} />
+  </section>
 {/if}
 
 <style>
+  .tool-shell {
+    display: grid;
+    gap: var(--space-2);
+  }
+
   .not-found {
     max-width: 720px;
     display: grid;
@@ -150,6 +157,6 @@
   }
 
   a:hover {
-    background: #1f1f1f;
+    background: var(--surface-hover);
   }
 </style>

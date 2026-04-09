@@ -68,10 +68,13 @@
   .category-block {
     display: grid;
     gap: var(--space-2);
+    padding: var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
   }
 
   h2 {
-    font-size: 14px;
+    font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.02em;
     color: var(--text-muted);
@@ -79,7 +82,7 @@
   }
 
   .count {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--text-muted);
     font-weight: normal;
     text-transform: none;
@@ -99,6 +102,10 @@
   }
 
   @media (max-width: 640px) {
+    .category-block {
+      padding: var(--space-2);
+    }
+
     .grid {
       grid-template-columns: 1fr;
     }

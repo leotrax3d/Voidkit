@@ -23,19 +23,20 @@
 <style>
   .card {
     display: grid;
-    min-height: 224px;
+    min-height: 216px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: var(--space-2);
     text-decoration: none;
     color: inherit;
-    transition: border-color 150ms ease;
+    transition: border-color 150ms ease, background-color 150ms ease;
   }
 
   .card:hover,
   .card:focus-visible {
     border-color: var(--accent);
+    background: var(--surface-hover);
     outline: none;
   }
 
@@ -70,8 +71,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 1;
-    line-clamp: 1;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
   }
 </style>

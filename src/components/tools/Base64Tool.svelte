@@ -136,7 +136,7 @@
     </div>
   </section>
 
-  <section class="panel output" aria-live="polite">
+  <section class="panel output" aria-live="polite" aria-atomic="true">
     <div class="output-head">
       <h2>Result</h2>
       <div class="buttons">
@@ -209,7 +209,7 @@
   }
 
   textarea.error {
-    border-color: #b84a4a;
+    border-color: var(--error-border);
   }
 
   .output-head {
@@ -221,7 +221,7 @@
   }
 
   .error {
-    color: #f08b8b;
+    color: var(--error-text);
     font-size: 14px;
   }
 

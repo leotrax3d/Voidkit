@@ -180,7 +180,7 @@
     </section>
   {/if}
 
-  <section class="panel output" aria-live="polite">
+  <section class="panel output" aria-live="polite" aria-atomic="true">
     <div class="output-head">
       <h2>Result</h2>
       <button type="button" on:click={copyOutput} disabled={outputJson.length === 0}>Copy output</button>
@@ -261,7 +261,7 @@
     padding: var(--space-1);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    background: #111111;
+    background: var(--surface-subtle);
     overflow: auto;
   }
 
@@ -273,7 +273,7 @@
   }
 
   :global(.json-key) {
-    color: #a3e635;
+    color: var(--success);
   }
 
   :global(.json-string) {
@@ -305,7 +305,7 @@
 
   .invalid,
   .error {
-    color: #f08b8b;
+    color: var(--error-text);
   }
 
   .copy-status {

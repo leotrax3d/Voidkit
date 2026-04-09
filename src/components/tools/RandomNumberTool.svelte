@@ -220,7 +220,7 @@
   }
 
   .errors p {
-    color: #f08b8b;
+    color: var(--error-text);
   }
 
   ol {
