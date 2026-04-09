@@ -27,6 +27,7 @@
   import CronExpressionBuilderTool from '../../../components/tools/CronExpressionBuilderTool.svelte';
   import ColorPaletteGeneratorTool from '../../../components/tools/ColorPaletteGeneratorTool.svelte';
   import CameraFingerCounterTool from '../../../components/tools/CameraFingerCounterTool.svelte';
+  import DeskPostureCoachTool from '../../../components/tools/DeskPostureCoachTool.svelte';
   import ApplauseMeterTool from '../../../components/tools/ApplauseMeterTool.svelte';
   import CaesarCipherTool from '../../../components/tools/CaesarCipherTool.svelte';
   import VigenereCipherTool from '../../../components/tools/VigenereCipherTool.svelte';
@@ -77,6 +78,7 @@
     'shadow-generator': ShadowGeneratorTool,
     'cron-expression-builder': CronExpressionBuilderTool,
     'camera-finger-counter': CameraFingerCounterTool,
+    'desk-posture-coach': DeskPostureCoachTool,
     'applause-meter': ApplauseMeterTool,
     'color-palette-generator': ColorPaletteGeneratorTool,
     'caesar-cipher': CaesarCipherTool,

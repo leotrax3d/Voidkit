@@ -21,6 +21,7 @@ import {
   ScrollText,
   SparklesIcon,
   Mic,
+  PersonStanding,
   Users
 } from 'lucide-svelte';
 import type { CategoryGroup, Tool } from '$lib/types';
@@ -385,6 +386,14 @@ export const tools: Tool[] = [
     category: 'Development',
     icon: Camera,
     slug: 'camera-finger-counter'
+  },
+  {
+    id: 'desk-posture-coach',
+    name: 'Desk Posture Coach',
+    description: 'Monitor sitting posture with local camera-based pose analysis and coaching alerts.',
+    category: 'Health & Productivity',
+    icon: PersonStanding,
+    slug: 'desk-posture-coach'
   },
   {
     id: 'applause-meter',
