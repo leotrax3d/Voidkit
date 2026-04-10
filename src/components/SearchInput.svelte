@@ -32,14 +32,14 @@
 
   .label {
     color: var(--text-muted);
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .search-control {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     background: var(--surface-subtle);
-    transition: border-color 120ms ease, background-color 120ms ease;
+    transition: border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
   }
 
   .search-control:hover {
