@@ -5,8 +5,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![Vite](https://img.shields.io/badge/Vite-7.x-646cff?logo=vite&logoColor=white)](https://vitejs.dev)
 [![Docker](https://img.shields.io/badge/Docker-ready-2496ed?logo=docker&logoColor=white)](docker-compose.yml)
-[![GitHub stars](https://img.shields.io/github/stars/leotrax3d/voidkit?style=flat)](https://github.com/leotrax3d/voidkit/stargazers)
-[![Last commit](https://img.shields.io/github/last-commit/leotrax3d/voidkit?style=flat)](https://github.com/leotrax3d/voidkit/commits/main)
+[![GitHub stars](https://img.shields.io/github/stars/leotrax3d/voidkit?style=flat)](https://github.com/leotrax3d/voidkit)
 [![Open issues](https://img.shields.io/github/issues/leotrax3d/voidkit?style=flat)](https://github.com/leotrax3d/voidkit/issues)
 ![Badge](https://hitscounter.dev/api/hit?url=https%3A%2F%2Fgithub.com%2Fleotrax3d%2FVoidkit&label=Views&icon=github&color=%23198754&message=&style=flat&tz=UTC)
 
