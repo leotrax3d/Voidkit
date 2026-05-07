@@ -8,6 +8,8 @@
 [![GitHub stars](https://img.shields.io/github/stars/leotrax3d/voidkit?style=flat)](https://github.com/leotrax3d/voidkit/stargazers)
 [![Last commit](https://img.shields.io/github/last-commit/leotrax3d/voidkit?style=flat)](https://github.com/leotrax3d/voidkit/commits/main)
 [![Open issues](https://img.shields.io/github/issues/leotrax3d/voidkit?style=flat)](https://github.com/leotrax3d/voidkit/issues)
+![Badge](https://hitscounter.dev/api/hit?url=https%3A%2F%2Fgithub.com%2Fleotrax3d%2FVoidkit&label=Views&icon=github&color=%23198754&message=&style=flat&tz=UTC)
+
 
 Minimal developer utilities toolkit. A fast, accessible, and extensible collection of tools for developers, built with modern web technologies.
 
